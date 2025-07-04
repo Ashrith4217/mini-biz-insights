@@ -3,8 +3,22 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Star, MessageSquare, Sparkles, RefreshCw } from 'lucide-react';
 
-export function BusinessResults({ data, onRegenerateHeadline, isRegenerating }) {
-  const getStars = (rating) => {
+interface BusinessData {
+  name: string;
+  location: string;
+  rating: number;
+  reviews: number;
+  headline: string;
+}
+
+interface BusinessResultsProps {
+  data: BusinessData;
+  onRegenerateHeadline: () => void;
+  isRegenerating: boolean;
+}
+
+export function BusinessResults({ data, onRegenerateHeadline, isRegenerating }: BusinessResultsProps) {
+  const getStars = (rating: number) => {
     const fullStars = Math.floor(rating);
     const hasHalfStar = rating % 1 !== 0;
     const stars = [];

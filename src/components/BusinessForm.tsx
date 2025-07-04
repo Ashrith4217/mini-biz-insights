@@ -5,13 +5,18 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { MapPin, Building2 } from 'lucide-react';
 
-export function BusinessForm({ onSubmit, isLoading }) {
+interface BusinessFormProps {
+  onSubmit: (data: { name: string; location: string }) => void;
+  isLoading: boolean;
+}
+
+export function BusinessForm({ onSubmit, isLoading }: BusinessFormProps) {
   const [name, setName] = useState('');
   const [location, setLocation] = useState('');
-  const [errors, setErrors] = useState({});
+  const [errors, setErrors] = useState<{ name?: string; location?: string }>({});
 
   const validateForm = () => {
-    const newErrors = {};
+    const newErrors: { name?: string; location?: string } = {};
     
     if (!name.trim()) {
       newErrors.name = 'Business name is required';
@@ -25,7 +30,7 @@ export function BusinessForm({ onSubmit, isLoading }) {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
     if (validateForm()) {

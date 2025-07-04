@@ -5,13 +5,21 @@ import { mockAPI } from '@/lib/api';
 import { useToast } from '@/hooks/use-toast';
 import { TrendingUp, Sparkles } from 'lucide-react';
 
+interface BusinessData {
+  name: string;
+  location: string;
+  rating: number;
+  reviews: number;
+  headline: string;
+}
+
 const Index = () => {
-  const [businessData, setBusinessData] = useState(null);
+  const [businessData, setBusinessData] = useState<BusinessData | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isRegenerating, setIsRegenerating] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = async (formData) => {
+  const handleSubmit = async (formData: { name: string; location: string }) => {
     setIsLoading(true);
     try {
       const result = await mockAPI.submitBusinessData(formData);
