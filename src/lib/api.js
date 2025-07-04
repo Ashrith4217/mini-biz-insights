@@ -1,15 +1,7 @@
 // Mock API service to simulate backend calls
 // In a real app, these would be actual HTTP requests to your Express server
 
-interface BusinessData {
-  name: string;
-  location: string;
-  rating: number;
-  reviews: number;
-  headline: string;
-}
-
-const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
+const sleep = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 // Sample SEO headlines templates
 const headlineTemplates = [
@@ -23,17 +15,17 @@ const headlineTemplates = [
   "{name}: Your Go-To {location} Destination for Excellence"
 ];
 
-const generateRating = (): number => {
+const generateRating = () => {
   // Generate ratings between 4.0 and 5.0 for realistic business ratings
   return parseFloat((Math.random() * 1 + 4).toFixed(1));
 };
 
-const generateReviews = (): number => {
+const generateReviews = () => {
   // Generate review counts between 50 and 500
   return Math.floor(Math.random() * 450) + 50;
 };
 
-const generateHeadline = (name: string, location: string, rating: number, reviews: number): string => {
+const generateHeadline = (name, location, rating, reviews) => {
   const template = headlineTemplates[Math.floor(Math.random() * headlineTemplates.length)];
   return template
     .replace('{name}', name)
@@ -44,7 +36,7 @@ const generateHeadline = (name: string, location: string, rating: number, review
 
 export const mockAPI = {
   // Simulate POST /business-data
-  async submitBusinessData(data: { name: string; location: string }): Promise<BusinessData> {
+  async submitBusinessData(data) {
     // Simulate network delay
     await sleep(1500);
     
@@ -62,7 +54,7 @@ export const mockAPI = {
   },
 
   // Simulate GET /regenerate-headline
-  async regenerateHeadline(name: string, location: string, rating: number, reviews: number): Promise<string> {
+  async regenerateHeadline(name, location, rating, reviews) {
     // Simulate network delay
     await sleep(800);
     
@@ -73,7 +65,7 @@ export const mockAPI = {
 // Real API functions (commented out - these would connect to your Express backend)
 /*
 export const realAPI = {
-  async submitBusinessData(data: { name: string; location: string }): Promise<BusinessData> {
+  async submitBusinessData(data) {
     const response = await fetch('http://localhost:3001/business-data', {
       method: 'POST',
       headers: {
@@ -89,7 +81,7 @@ export const realAPI = {
     return response.json();
   },
 
-  async regenerateHeadline(name: string, location: string): Promise<{ headline: string }> {
+  async regenerateHeadline(name, location) {
     const response = await fetch(
       `http://localhost:3001/regenerate-headline?name=${encodeURIComponent(name)}&location=${encodeURIComponent(location)}`
     );
