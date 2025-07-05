@@ -1,73 +1,184 @@
-# Welcome to your Lovable project
+# GrowthPro - Mini Local Business Dashboard
 
-## Project info
+A full-stack JavaScript application for local business analytics and SEO optimization.
 
-**URL**: https://lovable.dev/projects/1bea52d5-36b7-4371-920b-296411053345
+## 🔧 Technology Stack
 
-## How can I edit this code?
+**Frontend:** React (Vite) + Tailwind CSS - JavaScript Only (.js, .jsx)  
+**Backend:** Node.js + Express - JavaScript Only (.js)  
+**CORS:** Enabled for cross-origin requests  
+**Database:** None (simulated data)
 
-There are several ways of editing your application.
+## 📦 Project Structure
 
-**Use Lovable**
+```
+GrowthPro/
+├── growthpro-frontend/     # React frontend (JavaScript only)
+│   ├── src/
+│   │   ├── components/     # React components (.jsx)
+│   │   ├── pages/         # Page components (.jsx)
+│   │   ├── lib/           # Utilities and API (.js)
+│   │   └── main.jsx       # Application entry point
+│   ├── index.html
+│   ├── package.json
+│   └── README.md
+└── growthpro-backend/      # Express backend (JavaScript only)
+    ├── server.js          # Main server file
+    ├── package.json
+    └── README.md
+```
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/1bea52d5-36b7-4371-920b-296411053345) and start prompting.
+## 🎯 Application Features
 
-Changes made via Lovable will be committed automatically to this repo.
+### Frontend Features
+- ✅ **Business Form** with name and location inputs
+- ✅ **Form Validation** with error handling
+- ✅ **Loading Spinners** during API calls
+- ✅ **Responsive Design** with Tailwind CSS
+- ✅ **Business Results Display** with rating stars and review counts
+- ✅ **AI-Generated SEO Headlines** with regeneration feature
+- ✅ **Mobile-Friendly** responsive layout
 
-**Use your preferred IDE**
+### Backend Features
+- ✅ **POST /business-data** - Submit business data and get analytics
+- ✅ **GET /regenerate-headline** - Generate new SEO headlines
+- ✅ **CORS Enabled** for frontend communication
+- ✅ **Input Validation** and error handling
+- ✅ **Simulated Data** - no database required
+- ✅ **Realistic Business Metrics** (4.0-5.0 ratings, 50-500 reviews)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🚀 Quick Start
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### 1. Frontend Setup (React + Vite)
 
-Follow these steps:
+```bash
+# Install frontend dependencies
+npm install
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+The frontend will run on **http://localhost:8080**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### 2. Backend Setup (Node.js + Express)
 
-**Use GitHub Codespaces**
+See [BACKEND_CODE.md](./BACKEND_CODE.md) for complete backend implementation.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+```bash
+# Create backend folder
+mkdir growthpro-backend && cd growthpro-backend
 
-## What technologies are used for this project?
+# Initialize project
+npm init -y
 
-This project is built with:
+# Install dependencies
+npm install express cors
+npm install -D nodemon
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+# Copy server.js from BACKEND_CODE.md
+# Start backend server
+npm run dev
+```
 
-## How can I deploy this project?
+The backend will run on **http://localhost:3001**
 
-Simply open [Lovable](https://lovable.dev/projects/1bea52d5-36b7-4371-920b-296411053345) and click on Share -> Publish.
+## 🔗 API Endpoints
 
-## Can I connect a custom domain to my Lovable project?
+### POST /business-data
+Submit business information to get analytics.
 
-Yes, you can!
+**Request:**
+```json
+{
+  "name": "Joe's Pizza",
+  "location": "New York, NY"
+}
+```
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+**Response:**
+```json
+{
+  "name": "Joe's Pizza",
+  "location": "New York, NY",
+  "rating": 4.7,
+  "reviews": 234,
+  "headline": "Top-Rated Joe's Pizza in New York, NY - Trusted by 234+ Happy Customers"
+}
+```
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### GET /regenerate-headline
+Generate new SEO headline for existing business.
+
+**Request:**
+```
+GET /regenerate-headline?name=Joe's Pizza&location=New York, NY
+```
+
+**Response:**
+```json
+{
+  "headline": "Best Joe's Pizza Experience in New York, NY - 156 Five-Star Reviews"
+}
+```
+
+## 💻 Development
+
+### Frontend Scripts
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run preview      # Preview production build
+npm run lint         # Run ESLint
+```
+
+### Backend Scripts
+```bash
+npm start            # Start production server
+npm run dev          # Start with nodemon (auto-reload)
+```
+
+## 🎨 Design System
+
+The application uses a custom design system with:
+- **Semantic Color Tokens** (primary, success, warning, info)
+- **Responsive Tailwind Classes**
+- **Gradient Backgrounds** and modern UI
+- **Dark/Light Mode Support**
+- **Glass-morphism Effects** on cards
+
+## ⚠️ Important Notes
+
+- **JavaScript Only:** This project uses 0% TypeScript - all files are .js/.jsx
+- **No Database:** All data is simulated for demonstration
+- **CORS Enabled:** Backend configured for frontend communication
+- **Mobile Responsive:** Works on all device sizes
+- **Production Ready:** Includes error handling and validation
+
+## 🔄 Connecting Frontend to Backend
+
+1. **Start both servers** (frontend on 8080, backend on 3001)
+2. **Update API calls** in `src/lib/api.js`:
+   - Replace `mockAPI` usage with actual fetch calls to `http://localhost:3001`
+   - Backend endpoints are ready and CORS-enabled
+
+## 📱 Screenshots
+
+The application features a modern, responsive design with:
+- Clean business form with validation
+- Beautiful results cards with ratings and reviews
+- AI-generated SEO headlines with regeneration
+- Loading states and smooth transitions
+- Mobile-optimized layout
+
+## 🤝 Contributing
+
+This is a demonstration project showcasing full-stack JavaScript development with React and Express.
+
+## 📄 License
+
+MIT License - Feel free to use this code for learning and development.
+
+---
+
+**Tech Stack Summary:** React + Vite + Tailwind + Node.js + Express (100% JavaScript)
